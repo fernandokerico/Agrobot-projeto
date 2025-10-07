@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroBot - Olá, Produtor!</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Usando Roboto, que é a fonte definida no style.css, mas Poppins também funciona -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS LOCAL para simular o visual da imagem */
+
+        /* Garante que o container ocupe toda a área de visualização e use o gradiente */
+        .landing-container {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Alinha o conteúdo ao topo */
+            padding-top: 50px;
+            /* Degradê suave de verde (tons próximos ao da imagem) */
+            background: linear-gradient(to bottom, #a5d6a7, #7cb342); 
+            position: relative;
+            overflow: hidden;
+            color: #333; 
+        }
+
+        /* Corrigindo a cor do título para ser escura no fundo claro */
+        .landing-content h1 {
+            color: var(--agrobot-dark-green);
+        }
+
+        /* Elemento decorativo: Sol no canto superior direito */
+        .landing-sun {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: none;
+            border-radius: 50%;
+            opacity: 0.5; /* Suave */
+            /* Usando um SVG de Sol */
+        }
+        
+        /* Elementos decorativos: Nuvens */
+        .cloud-decoration {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            opacity: 0.3;
+        }
+
+        .cloud-decoration.top-right {
+            top: 150px;
+            right: 10px;
+        }
+
+        .cloud-decoration.bottom-left {
+            bottom: 250px;
+            left: -30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="landing-container">
+        
+        <!-- Elementos decorativos (Sol e Nuvem - Usando SVG inline para não depender de arquivos) -->
+        <svg class="landing-sun" viewBox="0 0 24 24" fill="#ffeb3b" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="6"></circle>
+            <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M18.36 5.64l-1.41 1.41M6.05 17.95l-1.41 1.41M18.36 18.36l-1.41-1.41M6.05 6.05l-1.41-1.41"></path>
+        </svg>
+
+        <svg class="cloud-decoration top-right" viewBox="0 0 200 200" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 120C75 120 50 100 50 75C50 50 75 30 100 30C125 30 150 50 150 75C150 100 125 120 100 120Z M130 90C115 90 100 70 100 55C100 40 115 20 130 20C145 20 160 40 160 55C160 70 145 90 130 90Z M70 90C55 90 40 70 40 55C40 40 55 20 70 20C85 20 100 40 100 55C100 70 85 90 70 90Z M150 70C135 70 120 50 120 35C120 20 135 0 150 0C165 0 180 20 180 35C180 50 165 70 150 70Z"></path>
+        </svg>
+
+        <svg class="cloud-decoration bottom-left" viewBox="0 0 200 200" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 120C75 120 50 100 50 75C50 50 75 30 100 30C125 30 150 50 150 75C150 100 125 120 100 120Z M130 90C115 90 100 70 100 55C100 40 115 20 130 20C145 20 160 40 160 55C160 70 145 90 130 90Z M70 90C55 90 40 70 40 55C40 40 55 20 70 20C85 20 100 40 100 55C100 70 85 90 70 90Z M150 70C135 70 120 50 120 35C120 20 135 0 150 0C165 0 180 20 180 35C180 50 165 70 150 70Z"></path>
+        </svg>
+        
+        <div class="landing-content">
+            <h1>Olá, produtor!<br>Eu sou o AgroBot, seu assistente virtual.</h1>
+            <p>Pronto para te ajudar com as dúvidas sobre pecuária de corte.</p>
+            
+            <!-- Usando placeholder para a imagem do cow-3d.png -->
+            <img src="https://placehold.co/300x300/e0e0e0/555555?text=Cow+3D" alt="AgroBot Assistente Virtual" class="cow-image" onerror="this.src='cow-3d.png'">
+            
+            <a href="home.html" style="text-decoration: none; width: 100%; display: block;">
+                <button class="landing-button">Falar com o AgroBot</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
