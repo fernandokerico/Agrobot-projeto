@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroBot - Menu Principal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- CABEÇALHO SUPERIOR (AgroBot) -->
+        <header class="app-header">
+            <!-- Usando logo para garantir a imagem e o texto no cabeçalho -->
+            <!-- Caminho da Logo: mantido na raiz, mas ajuste se a logo principal for para a pasta menufoto -->
+                <h2>AgroBot</h2>
+        </header>
+
+        <!-- NAVEGAÇÃO POR ABAS (Nutrição, Saúde, Pastagem, Engorda) -->
+        <nav class="nav-tabs">
+            <button class="active">Nutrição</button>
+            <button>Saúde</button>
+            <button>Pastagem</button>
+            <button>Engorda</button>
+        </nav>
+
+        <!-- CONTEÚDO PRINCIPAL (GRID DE AÇÕES) -->
+        <main class="home-content">
+            
+            <div class="action-grid">
+                
+                <!-- LINHA 1: Cadastros Iniciais -->
+                
+                <a href="cadastro_brincos.html" class="action-card">
+                    <!-- Caminho atualizado pelo usuário -->
+                    <img src="menufoto/fotobrinco.png" alt="Cadastrar Brincos">
+                    <p>Cadastrado Brincos</p>
+                </a>
+                
+                <a href="cadastro_pesagem.html" class="action-card">
+                    <!-- Caminho atualizado pelo usuário -->
+                    <img src="menufoto/pesagem.png" alt="Lançar Pesagem">
+                    <p>Lançar Pesagem</p>
+                </a>
+                
+                <a href="cadastro_lotes.html" class="action-card">
+                    <!-- Caminho atualizado pelo usuário -->
+                    <img src="menufoto/boi.png" alt="Cadastrado Lote">
+                    <p>Cadastrado Lote</p>
+                </a>
+                 <!-- O 4º ícone na primeira linha da imagem de referência é duplicado (Cadastrado Lote), então o repetimos: -->
+                 <a href="cadastro_lotes.html" class="action-card">
+                    <!-- Caminho atualizado pelo usuário -->
+                    <img src="menufoto/boi.png" alt="Cadastrado Lote">
+                    <p>Cadastrado Lote</p>
+                </a>
+
+                <!-- LINHA 2: Lançamentos e Relatórios -->
+
+                <a href="lancamento_vendas.html" class="action-card">
+                    <!-- Caminho atualizado pelo usuário -->
+                    <img src="menufoto/coin.png" alt="Lançar Venda">
+                    <p>Lançar Venda</p>
+                </a>
+                 <!-- Os ícones de 'Lançar Venda' são repetidos na imagem de referência: -->
+                 <a href="lancamento_vendas.html" class="action-card">
+                    <!-- Caminho atualizado pelo usuário -->
+                    <img src="menufoto/vendas.png" alt="Lançar Venda">
+                    <p>Lançar Venda</p>
+                </a>
+                 <a href="lancamento_vendas.html" class="action-card">
+                    <!-- Caminho atualizado pelo usuário -->
+                    <img src="menufoto/vendas.png" alt="Lançar Venda">
+                    <p>Lançar Venda</p>
+                </a>
+
+                <a href="relatorios.html" class="action-card">
+                    <!-- Caminho atualizado pelo usuário -->
+                    <img src="menufoto/relatorio.png" alt="Relatórios">
+                    <p>Relátrios</p>
+                </a>
+            </div>
+
+            <!-- Espaço reservado para o conteúdo da aba ativa -->
+            <div style="margin-top: 20px;">
+                <!-- Aqui entraria o conteúdo da aba Nutrição, como gráficos ou listas -->
+            </div>
+
+        </main>
+
+        <!-- CAMPO DE CHAT/BUSCA (FIXO NO RODAPÉ) -->
+        <div class="chat-input-container">
+            <input type="text" placeholder="Digite sua dúvida aqui...">
+            <button>
+                <!-- Caminho atualizado pelo usuário -->
+                <img src="menufoto/send.png" alt="Enviar">
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

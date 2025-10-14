@@ -489,3 +489,42 @@ margin-top: 15px;
 .app-submit-button:hover {
 background-color: var(--agrobot-green);
 }
+
+
+
+/* 1. Remove Sublinhado e garante que o link ocupe o card inteiro */
+.action-card {
+    text-decoration: none; /* REMOVE O SUBLINHADO */
+    color: #333; /* Garante que o texto seja escuro (cor padrão) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Adicionado para distribuir o espaço de forma mais uniforme (Proporção) */
+    justify-content: space-around; 
+    height: 100px; /* Mantém a altura consistente */
+}
+
+/* 2. Ajusta o tamanho da Imagem para melhor proporção */
+.action-card img {
+    width: 30px; /* Reduzido de 35px para 30px */
+    height: 30px;
+    margin-bottom: 0px; /* Remove margem extra para centralização */
+}
+
+/* 3. Ajusta o Título */
+.action-card p {
+    font-size: 0.75rem;
+    line-height: 1.1;
+    margin-top: 5px; /* Adiciona um pequeno espaço entre a imagem e o texto */
+}
+
+
+/* Garante que o cabeçalho e o rodapé fiquem centralizados e não excedam o max-width do app-container */
+.app-header,
+.chat-input-container {
+    width: 100%;
+    max-width: 500px; /* A largura máxima do seu app-container */
+    /* Adiciona margem automática para centralizar o elemento na tela */
+    margin-left: auto;
+    margin-right: auto;
+}
