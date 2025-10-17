@@ -57,27 +57,13 @@
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.3,
-      "position": [
-        512,
-        176
-      ],
-      "id": "ceaf3e2d-b6bb-443b-a66f-d6ef98d93dcb",
-      "name": "When chat message received",
-      "webhookId": "5f0a9433-54fc-4659-bdd0-502e4d4b072e"
-    },
-    {
-      "parameters": {
         "batching": {}
       },
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        624,
-        0
+        1216,
+        -320
       ],
       "id": "7f66f474-3d38-41ba-890d-2d6dff188a07",
       "name": "Basic LLM Chain"
@@ -95,8 +81,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
       "typeVersion": 1.3,
       "position": [
-        704,
-        224
+        1296,
+        -96
       ],
       "id": "045be6a4-cb76-4f29-98cf-1dcc953dfa6c",
       "name": "Anthropic Chat Model"
@@ -115,8 +101,8 @@
       "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
       "typeVersion": 1,
       "position": [
-        912,
-        16
+        1504,
+        -304
       ],
       "id": "d74983aa-1f73-44bb-8d2a-a3a2bc8324bf",
       "name": "Convert text to speech"
@@ -209,6 +195,62 @@
           "name": "Telegram Account Agrobot"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.assemblyai.com/v2/transcript",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "8f40491b243146c9902404778c75b609"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "audio_url",
+              "value": "={{ $json.upload_url }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        768,
+        -320
+      ],
+      "id": "032f81cf-3754-40e1-b31f-bc759c16df8c",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.assemblyai.com/v2/transcript/{{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "8f40491b243146c9902404778c75b609"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        976,
+        -320
+      ],
+      "id": "92b6ab31-50e6-4055-8926-4e122ff73a86",
+      "name": "HTTP Request2"
     }
   ],
   "pinData": {},
@@ -230,17 +272,6 @@
           {
             "node": "Basic LLM Chain",
             "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "When chat message received": {
-      "main": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "main",
             "index": 0
           }
         ]
@@ -279,6 +310,39 @@
           }
         ]
       ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -286,7 +350,7 @@
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "bf684cd8-75bb-466a-9f3f-b265547e8338",
+  "versionId": "d0779705-c9e5-45c0-a15e-f8ac632e01d2",
   "meta": {
     "instanceId": "0745f470424028f5b545f358433257dc798d5cc79f7c3eac7a4cea2cc04bbb2d"
   },
