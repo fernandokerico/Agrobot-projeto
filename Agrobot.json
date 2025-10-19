@@ -3,60 +3,6 @@
   "nodes": [
     {
       "parameters": {
-        "updates": [
-          "message"
-        ],
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.telegramTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        0,
-        0
-      ],
-      "id": "11585da4-a6df-43f3-8b94-813162bb4ba8",
-      "name": "Telegram Trigger",
-      "webhookId": "d5699c14-f8de-4dbe-aba1-51f4f85faaa8",
-      "credentials": {
-        "telegramApi": {
-          "id": "fEtoW3pfs5vTme4C",
-          "name": "Telegram Account Agrobot"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.assemblyai.com/v2/upload",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "8f40491b243146c9902404778c75b609"
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/octet-stream"
-            }
-          ]
-        },
-        "sendBody": true,
-        "contentType": "binaryData",
-        "inputDataFieldName": "data",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        528,
-        -320
-      ],
-      "id": "93656531-4ac6-4e54-a63e-a2af544676d5",
-      "name": "HTTP Request"
-    },
-    {
-      "parameters": {
         "batching": {}
       },
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
@@ -85,7 +31,13 @@
         -96
       ],
       "id": "045be6a4-cb76-4f29-98cf-1dcc953dfa6c",
-      "name": "Anthropic Chat Model"
+      "name": "Anthropic Chat Model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "Cp3EHtoCdDQtuz03",
+          "name": "Anthropic account"
+        }
+      }
     },
     {
       "parameters": {
@@ -93,7 +45,7 @@
         "voice": {
           "__rl": true,
           "mode": "list",
-          "value": null
+          "value": {}
         },
         "additionalOptions": {},
         "requestOptions": {}
@@ -102,7 +54,7 @@
       "typeVersion": 1,
       "position": [
         1504,
-        -304
+        -320
       ],
       "id": "d74983aa-1f73-44bb-8d2a-a3a2bc8324bf",
       "name": "Convert text to speech"
@@ -176,25 +128,26 @@
     },
     {
       "parameters": {
-        "resource": "file",
-        "fileId": "={{ $json.message.voice.file_id }}",
-        "additionalFields": {}
+        "url": "=https://api.assemblyai.com/v2/transcript/{{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "8f40491b243146c9902404778c75b609"
+            }
+          ]
+        },
+        "options": {}
       },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
-        336,
-        -176
+        976,
+        -320
       ],
-      "id": "26494bec-3386-4756-a6c2-bba298f634b9",
-      "name": "Get a file",
-      "webhookId": "9366bd04-f5f5-4864-9ef8-4fb0cdfe03d6",
-      "credentials": {
-        "telegramApi": {
-          "id": "fEtoW3pfs5vTme4C",
-          "name": "Telegram Account Agrobot"
-        }
-      }
+      "id": "92b6ab31-50e6-4055-8926-4e122ff73a86",
+      "name": "GET Transcrição"
     },
     {
       "parameters": {
@@ -227,45 +180,87 @@
         -320
       ],
       "id": "032f81cf-3754-40e1-b31f-bc759c16df8c",
-      "name": "HTTP Request1"
+      "name": "POST Arquivo Baixado"
     },
     {
       "parameters": {
-        "url": "=https://api.assemblyai.com/v2/transcript/{{ $json.id }}",
+        "method": "POST",
+        "url": "https://api.assemblyai.com/v2/upload",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
               "value": "8f40491b243146c9902404778c75b609"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/octet-stream"
             }
           ]
         },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        976,
+        528,
         -320
       ],
-      "id": "92b6ab31-50e6-4055-8926-4e122ff73a86",
-      "name": "HTTP Request2"
+      "id": "93656531-4ac6-4e54-a63e-a2af544676d5",
+      "name": "POST Assembly AI"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $json.message.voice.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        336,
+        -176
+      ],
+      "id": "26494bec-3386-4756-a6c2-bba298f634b9",
+      "name": "Baixando Arquivo",
+      "webhookId": "9366bd04-f5f5-4864-9ef8-4fb0cdfe03d6",
+      "credentials": {
+        "telegramApi": {
+          "id": "fEtoW3pfs5vTme4C",
+          "name": "Telegram Account Agrobot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "11585da4-a6df-43f3-8b94-813162bb4ba8",
+      "name": "Gatilho Telegram",
+      "webhookId": "d5699c14-f8de-4dbe-aba1-51f4f85faaa8",
+      "credentials": {
+        "telegramApi": {
+          "id": "fEtoW3pfs5vTme4C",
+          "name": "Telegram Account Agrobot"
+        }
+      }
     }
   ],
   "pinData": {},
   "connections": {
-    "Telegram Trigger": {
-      "main": [
-        [
-          {
-            "node": "Switch",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Anthropic Chat Model": {
       "ai_languageModel": [
         [
@@ -292,7 +287,7 @@
       "main": [
         [
           {
-            "node": "Get a file",
+            "node": "Baixando Arquivo",
             "type": "main",
             "index": 0
           }
@@ -300,44 +295,55 @@
         []
       ]
     },
-    "Get a file": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request1": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request2": {
+    "GET Transcrição": {
       "main": [
         [
           {
             "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "POST Arquivo Baixado": {
+      "main": [
+        [
+          {
+            "node": "GET Transcrição",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "POST Assembly AI": {
+      "main": [
+        [
+          {
+            "node": "POST Arquivo Baixado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baixando Arquivo": {
+      "main": [
+        [
+          {
+            "node": "POST Assembly AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gatilho Telegram": {
+      "main": [
+        [
+          {
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -350,7 +356,7 @@
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "d0779705-c9e5-45c0-a15e-f8ac632e01d2",
+  "versionId": "eccc5506-d8b5-4fd2-9c07-ad6acb919f6f",
   "meta": {
     "instanceId": "0745f470424028f5b545f358433257dc798d5cc79f7c3eac7a4cea2cc04bbb2d"
   },
