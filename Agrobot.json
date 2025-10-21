@@ -57,7 +57,13 @@
         -320
       ],
       "id": "d74983aa-1f73-44bb-8d2a-a3a2bc8324bf",
-      "name": "Convert text to speech"
+      "name": "Convert text to speech",
+      "credentials": {
+        "elevenLabsApi": {
+          "id": "oYjdbb1mpqWIMa7q",
+          "name": "ElevenLabs account"
+        }
+      }
     },
     {
       "parameters": {
@@ -259,7 +265,115 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "POST Arquivo Baixado": [
+      {
+        "json": {
+          "id": "20347899-8c4a-416c-9cc7-2126a3fa141f",
+          "language_model": "assemblyai_default",
+          "acoustic_model": "assemblyai_default",
+          "language_code": "pt_br",
+          "speech_understanding": null,
+          "translated_texts": null,
+          "status": "queued",
+          "audio_url": "https://cdn.assemblyai.com/upload/462276a0-c3d1-44da-8202-c79c43613381",
+          "text": null,
+          "words": null,
+          "utterances": null,
+          "confidence": null,
+          "audio_duration": null,
+          "punctuate": true,
+          "format_text": true,
+          "dual_channel": null,
+          "webhook_url": null,
+          "webhook_status_code": null,
+          "webhook_auth": false,
+          "webhook_auth_header_name": null,
+          "speed_boost": false,
+          "auto_highlights_result": null,
+          "auto_highlights": false,
+          "audio_start_from": null,
+          "audio_end_at": null,
+          "word_boost": [],
+          "boost_param": null,
+          "prompt": null,
+          "keyterms_prompt": null,
+          "filter_profanity": false,
+          "redact_pii": false,
+          "redact_pii_audio": false,
+          "redact_pii_audio_quality": null,
+          "redact_pii_audio_options": null,
+          "redact_pii_policies": null,
+          "redact_pii_sub": null,
+          "speaker_labels": false,
+          "speaker_options": null,
+          "content_safety": false,
+          "iab_categories": false,
+          "content_safety_labels": {},
+          "iab_categories_result": {},
+          "language_detection": false,
+          "language_detection_options": null,
+          "language_detection_results": null,
+          "language_confidence_threshold": null,
+          "language_confidence": null,
+          "custom_spelling": null,
+          "throttled": false,
+          "auto_chapters": false,
+          "summarization": false,
+          "summary_type": null,
+          "summary_model": null,
+          "custom_topics": false,
+          "topics": [],
+          "speech_threshold": null,
+          "speech_model": null,
+          "chapters": null,
+          "disfluencies": false,
+          "entity_detection": false,
+          "sentiment_analysis": false,
+          "sentiment_analysis_results": null,
+          "entities": null,
+          "speakers_expected": null,
+          "summary": null,
+          "custom_topics_results": null,
+          "is_deleted": null,
+          "multichannel": null,
+          "project_id": 1375038,
+          "token_id": 1385922
+        }
+      }
+    ],
+    "Gatilho Telegram": [
+      {
+        "json": {
+          "update_id": 555796459,
+          "message": {
+            "message_id": 14,
+            "from": {
+              "id": 7546371995,
+              "is_bot": false,
+              "first_name": "Arthur",
+              "last_name": "Ribeiro Henrique",
+              "language_code": "pt"
+            },
+            "chat": {
+              "id": 7546371995,
+              "first_name": "Arthur",
+              "last_name": "Ribeiro Henrique",
+              "type": "private"
+            },
+            "date": 1761010924,
+            "voice": {
+              "duration": 16,
+              "mime_type": "audio/ogg",
+              "file_id": "AwACAgEAAxkBAAMOaPbk69xCm_qrc4pA_hN8c1yQ79gAAmYGAAI9e7lHhwrZzXcvkX82BA",
+              "file_unique_id": "AgADZgYAAj17uUc",
+              "file_size": 341977
+            }
+          }
+        }
+      }
+    ]
+  },
   "connections": {
     "Anthropic Chat Model": {
       "ai_languageModel": [
@@ -356,8 +470,9 @@
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "eccc5506-d8b5-4fd2-9c07-ad6acb919f6f",
+  "versionId": "2749b6f1-f263-4b61-a99d-f6157df53598",
   "meta": {
+    "templateCredsSetupCompleted": true,
     "instanceId": "0745f470424028f5b545f358433257dc798d5cc79f7c3eac7a4cea2cc04bbb2d"
   },
   "id": "F5xcmdF3P9JOyqbK",
