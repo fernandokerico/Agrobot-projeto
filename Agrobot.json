@@ -3,17 +3,18 @@
   "nodes": [
     {
       "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
         "batching": {}
       },
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        1216,
-        -320
+        880,
+        -256
       ],
-      "id": "7f66f474-3d38-41ba-890d-2d6dff188a07",
-      "name": "Basic LLM Chain",
-      "disabled": true
+      "id": "48e95275-ac01-4288-91a6-58ed76e85197",
+      "name": "Basic LLM Chain"
     },
     {
       "parameters": {
@@ -23,50 +24,24 @@
           "value": "claude-sonnet-4-20250514",
           "cachedResultName": "Claude 4 Sonnet"
         },
-        "options": {}
+        "options": {
+          "thinking": true
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
       "typeVersion": 1.3,
       "position": [
-        1296,
-        -96
+        960,
+        -32
       ],
-      "id": "045be6a4-cb76-4f29-98cf-1dcc953dfa6c",
+      "id": "fbe42277-c8fa-4354-a0b6-6b3cf265e419",
       "name": "Anthropic Chat Model",
       "credentials": {
         "anthropicApi": {
-          "id": "Cp3EHtoCdDQtuz03",
+          "id": "uAgcoPwxG5omudti",
           "name": "Anthropic account"
         }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "resource": "speech",
-        "voice": {
-          "__rl": true,
-          "mode": "list",
-          "value": {}
-        },
-        "additionalOptions": {},
-        "requestOptions": {}
-      },
-      "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
-      "typeVersion": 1,
-      "position": [
-        1504,
-        -320
-      ],
-      "id": "d74983aa-1f73-44bb-8d2a-a3a2bc8324bf",
-      "name": "Convert text to speech",
-      "credentials": {
-        "elevenLabsApi": {
-          "id": "oYjdbb1mpqWIMa7q",
-          "name": "ElevenLabs account"
-        }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -129,10 +104,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        208,
-        0
+        -128,
+        64
       ],
-      "id": "335d47d9-6d22-4d4f-b421-3f2353e03d57",
+      "id": "4a210e39-0c3b-4d1a-9b97-959aa86ccc09",
       "name": "Switch"
     },
     {
@@ -152,12 +127,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        976,
-        -320
+        640,
+        -256
       ],
-      "id": "92b6ab31-50e6-4055-8926-4e122ff73a86",
-      "name": "GET Transcrição",
-      "disabled": true
+      "id": "2ef82d62-7b63-49f5-accc-576acb11a97e",
+      "name": "GET Transcrição"
     },
     {
       "parameters": {
@@ -178,6 +152,14 @@
             {
               "name": "audio_url",
               "value": "={{ $json.upload_url }}"
+            },
+            {
+              "name": "language_code",
+              "value": "pt_br"
+            },
+            {
+              "name": "speech_model",
+              "value": "best"
             }
           ]
         },
@@ -186,12 +168,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        768,
-        -320
+        432,
+        -256
       ],
-      "id": "032f81cf-3754-40e1-b31f-bc759c16df8c",
-      "name": "POST Arquivo Baixado",
-      "disabled": true
+      "id": "4b0fee60-0f2e-4be8-85ce-84844d749ed8",
+      "name": "POST Arquivo Baixado"
     },
     {
       "parameters": {
@@ -218,12 +199,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        528,
-        -320
+        192,
+        -256
       ],
-      "id": "93656531-4ac6-4e54-a63e-a2af544676d5",
-      "name": "POST Assembly AI",
-      "disabled": true
+      "id": "15bd0356-89f0-428e-b2f3-905306dc0d1c",
+      "name": "POST Assembly AI"
     },
     {
       "parameters": {
@@ -234,16 +214,16 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        336,
-        -176
+        0,
+        -112
       ],
-      "id": "26494bec-3386-4756-a6c2-bba298f634b9",
+      "id": "ddc5249a-320a-4807-8d0f-cde0fec03462",
       "name": "Baixando Arquivo",
       "webhookId": "9366bd04-f5f5-4864-9ef8-4fb0cdfe03d6",
       "credentials": {
         "telegramApi": {
-          "id": "fEtoW3pfs5vTme4C",
-          "name": "Telegram Account Agrobot"
+          "id": "Bngg8QjJUUq5fIQ7",
+          "name": "Telegram account"
         }
       }
     },
@@ -257,151 +237,21 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        0,
-        0
+        -336,
+        64
       ],
-      "id": "11585da4-a6df-43f3-8b94-813162bb4ba8",
+      "id": "55f88cb5-d849-4630-94aa-43b67dbd490a",
       "name": "Gatilho Telegram",
       "webhookId": "d5699c14-f8de-4dbe-aba1-51f4f85faaa8",
       "credentials": {
         "telegramApi": {
-          "id": "fEtoW3pfs5vTme4C",
-          "name": "Telegram Account Agrobot"
+          "id": "Bngg8QjJUUq5fIQ7",
+          "name": "Telegram account"
         }
       }
-    },
-    {
-      "parameters": {
-        "resource": "file"
-      },
-      "type": "n8n-nodes-assemblyai.assemblyAi",
-      "typeVersion": 1,
-      "position": [
-        768,
-        -96
-      ],
-      "id": "68b15fab-829a-4032-a837-1c96bf6dee90",
-      "name": "Upload a file",
-      "credentials": {
-        "assemblyAiApi": {
-          "id": "gM0yxGkrN4aGKakB",
-          "name": "AssemblyAI account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "additionalFields": {
-          "language_code": "pt"
-        }
-      },
-      "type": "n8n-nodes-assemblyai.assemblyAi",
-      "typeVersion": 1,
-      "position": [
-        944,
-        -96
-      ],
-      "id": "098ae78b-4613-4166-9fa5-1489d6b11e0a",
-      "name": "Create a transcription",
-      "credentials": {
-        "assemblyAiApi": {
-          "id": "gM0yxGkrN4aGKakB",
-          "name": "AssemblyAI account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.readWriteFile",
-      "typeVersion": 1,
-      "position": [
-        576,
-        -96
-      ],
-      "id": "09078846-1fec-477e-9dd0-86279dae4b2c",
-      "name": "Read/Write Files from Disk"
     }
   ],
-  "pinData": {
-    "POST Arquivo Baixado": [
-      {
-        "json": {
-          "id": "20347899-8c4a-416c-9cc7-2126a3fa141f",
-          "language_model": "assemblyai_default",
-          "acoustic_model": "assemblyai_default",
-          "language_code": "pt_br",
-          "speech_understanding": null,
-          "translated_texts": null,
-          "status": "queued",
-          "audio_url": "https://cdn.assemblyai.com/upload/462276a0-c3d1-44da-8202-c79c43613381",
-          "text": null,
-          "words": null,
-          "utterances": null,
-          "confidence": null,
-          "audio_duration": null,
-          "punctuate": true,
-          "format_text": true,
-          "dual_channel": null,
-          "webhook_url": null,
-          "webhook_status_code": null,
-          "webhook_auth": false,
-          "webhook_auth_header_name": null,
-          "speed_boost": false,
-          "auto_highlights_result": null,
-          "auto_highlights": false,
-          "audio_start_from": null,
-          "audio_end_at": null,
-          "word_boost": [],
-          "boost_param": null,
-          "prompt": null,
-          "keyterms_prompt": null,
-          "filter_profanity": false,
-          "redact_pii": false,
-          "redact_pii_audio": false,
-          "redact_pii_audio_quality": null,
-          "redact_pii_audio_options": null,
-          "redact_pii_policies": null,
-          "redact_pii_sub": null,
-          "speaker_labels": false,
-          "speaker_options": null,
-          "content_safety": false,
-          "iab_categories": false,
-          "content_safety_labels": {},
-          "iab_categories_result": {},
-          "language_detection": false,
-          "language_detection_options": null,
-          "language_detection_results": null,
-          "language_confidence_threshold": null,
-          "language_confidence": null,
-          "custom_spelling": null,
-          "throttled": false,
-          "auto_chapters": false,
-          "summarization": false,
-          "summary_type": null,
-          "summary_model": null,
-          "custom_topics": false,
-          "topics": [],
-          "speech_threshold": null,
-          "speech_model": null,
-          "chapters": null,
-          "disfluencies": false,
-          "entity_detection": false,
-          "sentiment_analysis": false,
-          "sentiment_analysis_results": null,
-          "entities": null,
-          "speakers_expected": null,
-          "summary": null,
-          "custom_topics_results": null,
-          "is_deleted": null,
-          "multichannel": null,
-          "project_id": 1375038,
-          "token_id": 1385922
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "connections": {
     "Anthropic Chat Model": {
       "ai_languageModel": [
@@ -416,13 +266,7 @@
     },
     "Basic LLM Chain": {
       "main": [
-        [
-          {
-            "node": "Convert text to speech",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Switch": {
@@ -433,8 +277,7 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "GET Transcrição": {
@@ -477,11 +320,6 @@
             "node": "POST Assembly AI",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Read/Write Files from Disk",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -496,40 +334,17 @@
           }
         ]
       ]
-    },
-    "Upload a file": {
-      "main": [
-        [
-          {
-            "node": "Create a transcription",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Read/Write Files from Disk": {
-      "main": [
-        [
-          {
-            "node": "Upload a file",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "active": false,
   "settings": {
-    "executionOrder": "v1",
-    "callerPolicy": "workflowsFromSameOwner"
+    "executionOrder": "v1"
   },
-  "versionId": "dca5f0ce-e946-4196-8ed0-7c314f4571dc",
+  "versionId": "fc6c6124-c7fc-41a7-b616-67aa7a62cfaa",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "0745f470424028f5b545f358433257dc798d5cc79f7c3eac7a4cea2cc04bbb2d"
+    "instanceId": "6e2de167b2de1ec7d41457055eda0f58bc345829a6200063a32688dc2f49e60a"
   },
-  "id": "F5xcmdF3P9JOyqbK",
+  "id": "8hatIroX04gZI8Se",
   "tags": []
 }
