@@ -155,7 +155,7 @@
             },
             {
               "name": "language_code",
-              "value": "pt_br"
+              "value": "pt"
             },
             {
               "name": "speech_model",
@@ -249,6 +249,52 @@
           "name": "Telegram account"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "output_format",
+              "value": "mp3_44100_128"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "sk_6969476857a6e974437db908602306d8bbd1485fd2abcdf7"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{ $json.data[1].text }}"
+            },
+            {
+              "name": "model_id",
+              "value": "eleven_multilingual_v2"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1232,
+        -256
+      ],
+      "id": "3d1ec3a5-0a11-4d50-ba19-301d7a4be1f3",
+      "name": "HTTP Request"
     }
   ],
   "pinData": {},
@@ -266,7 +312,13 @@
     },
     "Basic LLM Chain": {
       "main": [
-        []
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Switch": {
@@ -340,7 +392,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "fc6c6124-c7fc-41a7-b616-67aa7a62cfaa",
+  "versionId": "215b617d-2de4-4323-b261-8b866561d3c5",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "6e2de167b2de1ec7d41457055eda0f58bc345829a6200063a32688dc2f49e60a"
