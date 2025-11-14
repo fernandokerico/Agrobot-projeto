@@ -252,49 +252,39 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "output_format",
-              "value": "mp3_44100_128"
-            }
-          ]
+        "resource": "speech",
+        "voice": {
+          "__rl": true,
+          "value": "5Q0t7uMcjvnagumLfvZi",
+          "mode": "list",
+          "cachedResultName": "Paul"
         },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "xi-api-key",
-              "value": "sk_6969476857a6e974437db908602306d8bbd1485fd2abcdf7"
-            }
-          ]
+        "text": "=",
+        "additionalOptions": {
+          "model": {
+            "mode": "list",
+            "value": "eleven_multilingual_v2"
+          },
+          "outputFormat": "mp3_44100_128",
+          "languageCode": "pt",
+          "voiceSettings": "{\n  \"stability\": 1,\n  \"similarity_boost\": 1,\n  \"style\": 0,\n  \"use_speaker_boost\": true,\n  \"speed\": 1\n}"
         },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "text",
-              "value": "={{ $json.data[1].text }}"
-            },
-            {
-              "name": "model_id",
-              "value": "eleven_multilingual_v2"
-            }
-          ]
-        },
-        "options": {}
+        "requestOptions": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
+      "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
+      "typeVersion": 1,
       "position": [
         1232,
         -256
       ],
-      "id": "3d1ec3a5-0a11-4d50-ba19-301d7a4be1f3",
-      "name": "HTTP Request"
+      "id": "b4472222-2cdc-46a8-a9e3-b71300d5a827",
+      "name": "Convert text to speech",
+      "credentials": {
+        "elevenLabsApi": {
+          "id": "2SUazn7QDnx6T46I",
+          "name": "ElevenLabs account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -314,7 +304,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Convert text to speech",
             "type": "main",
             "index": 0
           }
@@ -392,7 +382,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "215b617d-2de4-4323-b261-8b866561d3c5",
+  "versionId": "0a506abe-d9d0-4727-932a-8fc089e1d3aa",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "6e2de167b2de1ec7d41457055eda0f58bc345829a6200063a32688dc2f49e60a"
