@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroBot - Registro de Brincos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</head>
+<body>
+
+    <div class="brincos-container">
+        
+        <header class="brincos-header">
+            Registros de Brincos
+            <img src="logo.png" alt="AgroBot Icon">
+        </header>
+
+        <div class="data-entry-container">
+            
+            <!-- Identificador do Lote (Caixa superior esquerda) -->
+            <div class="lote-identificador">
+                <small>Número do Lote</small>
+                <p>12345</p>
+            </div>
+
+            <!-- Contêiner que será replicado para cada linha de registro -->
+            <div id="registro-brincos">
+                <!-- LINHA DE REGISTRO INICIAL -->
+                <div class="input-row">
+                    <div class="input-group-brinco">
+                        <label for="brinco-1">Brinco</label>
+                        <input type="text" id="brinco-1" placeholder="brinco">
+                    </div>
+                    <div class="input-group-brinco">
+                        <label for="data-1">Data da Pesagem</label>
+                        <input type="date" id="data-1" placeholder="data da pesagem">
+                    </div>
+                    <div class="input-group-brinco">
+                        <label for="peso-1">Peso Chegada</label>
+                        <input type="number" id="peso-1" placeholder="peso chegada">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão Adicionar Linha -->
+            <button class="add-row-button" onclick="adicionarLinha()">
+                Adicionar
+                <span>+</span>
+            </button>
+            
+            <!-- Botão Salvar Principal -->
+            <div style="text-align: center;">
+                <button class="main-save-button" onclick="salvarRegistros()">
+                    salvar
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let rowCount = 1;
+
+        // Adiciona uma nova linha de input dinamicamente
+        function adicionarLinha() {
+            rowCount++;
+            const container = document.getElementById('registro-brincos');
+            
+            const newRow = document.createElement('div');
+            newRow.classList.add('input-row');
+            newRow.id = `row-${rowCount}`;
+
+            newRow.innerHTML = `
+                <div class="input-group-brinco">
+                    <label for="brinco-${rowCount}">Brinco</label>
+                    <input type="text" id="brinco-${rowCount}" placeholder="brinco">
+                </div>
+                <div class="input-group-brinco">
+                    <label for="data-${rowCount}">Data da Pesagem</label>
+                    <input type="date" id="data-${rowCount}" placeholder="data da pesagem">
+                </div>
+                <div class="input-group-brinco">
+                    <label for="peso-${rowCount}">Peso Chegada</label>
+                    <input type="number" id="peso-${rowCount}" placeholder="peso chegada">
+                </div>
+            `;
+            container.appendChild(newRow);
+
+            // Rola para o novo input
+            newRow.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function salvarRegistros() {
+            const registros = [];
+            for (let i = 1; i <= rowCount; i++) {
+                const brinco = document.getElementById(`brinco-${i}`)?.value;
+                const data = document.getElementById(`data-${i}`)?.value;
+                const peso = document.getElementById(`peso-${i}`)?.value;
+
+                if (brinco && peso) { // Apenas salva linhas que foram preenchidas
+                    registros.push({ brinco, data, peso });
+                }
+            }
+            
+            if (registros.length > 0) {
+                console.log("Registros a serem enviados:", registros);
+                alert(`Sucesso! ${registros.length} registros prontos para envio. (Verifique o Console para os dados)`);
+            } else {
+                alert("Nenhum dado preenchido para salvar.");
+            }
+        }
+    </script>
+</body>
+</html>
