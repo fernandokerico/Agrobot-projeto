@@ -1,5 +1,5 @@
 {
-  "name": "Agrobot",
+  "name": "Agrobot - Mais Atualizado",
   "nodes": [
     {
       "parameters": {
@@ -10,10 +10,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        880,
-        -256
+        688,
+        0
       ],
-      "id": "48e95275-ac01-4288-91a6-58ed76e85197",
+      "id": "d9989071-e751-4005-8fdf-02ac31a3de48",
       "name": "Basic LLM Chain"
     },
     {
@@ -31,14 +31,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
       "typeVersion": 1.3,
       "position": [
-        960,
-        -32
+        768,
+        224
       ],
-      "id": "fbe42277-c8fa-4354-a0b6-6b3cf265e419",
+      "id": "74a58037-0899-4ed0-807f-85ac7b792de7",
       "name": "Anthropic Chat Model",
       "credentials": {
         "anthropicApi": {
-          "id": "uAgcoPwxG5omudti",
+          "id": "Cp3EHtoCdDQtuz03",
           "name": "Anthropic account"
         }
       }
@@ -104,10 +104,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -128,
-        64
+        -320,
+        320
       ],
-      "id": "4a210e39-0c3b-4d1a-9b97-959aa86ccc09",
+      "id": "d62f0745-99d9-4a89-a2b6-3ff5b032ecf6",
       "name": "Switch"
     },
     {
@@ -127,10 +127,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        640,
-        -256
+        448,
+        0
       ],
-      "id": "2ef82d62-7b63-49f5-accc-576acb11a97e",
+      "id": "a7ad1867-aa56-4143-ae87-8c577730df3f",
       "name": "GET Transcrição"
     },
     {
@@ -168,10 +168,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        432,
-        -256
+        240,
+        0
       ],
-      "id": "4b0fee60-0f2e-4be8-85ce-84844d749ed8",
+      "id": "ce8b5b3a-eed6-41c9-acf1-cd125b60d484",
       "name": "POST Arquivo Baixado"
     },
     {
@@ -199,10 +199,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        192,
-        -256
+        0,
+        0
       ],
-      "id": "15bd0356-89f0-428e-b2f3-905306dc0d1c",
+      "id": "037ebbb5-2be3-421b-8923-efddf858655f",
       "name": "POST Assembly AI"
     },
     {
@@ -214,16 +214,16 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        0,
-        -112
+        -192,
+        144
       ],
-      "id": "ddc5249a-320a-4807-8d0f-cde0fec03462",
+      "id": "4e47adc3-1199-4053-b3a9-01b21a649a07",
       "name": "Baixando Arquivo",
       "webhookId": "9366bd04-f5f5-4864-9ef8-4fb0cdfe03d6",
       "credentials": {
         "telegramApi": {
-          "id": "Bngg8QjJUUq5fIQ7",
-          "name": "Telegram account"
+          "id": "fEtoW3pfs5vTme4C",
+          "name": "Telegram Account Agrobot"
         }
       }
     },
@@ -237,16 +237,16 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        -336,
-        64
+        -528,
+        320
       ],
-      "id": "55f88cb5-d849-4630-94aa-43b67dbd490a",
+      "id": "a1ec4a8c-90e0-498d-a5dd-c716c7a53cda",
       "name": "Gatilho Telegram",
       "webhookId": "d5699c14-f8de-4dbe-aba1-51f4f85faaa8",
       "credentials": {
         "telegramApi": {
-          "id": "Bngg8QjJUUq5fIQ7",
-          "name": "Telegram account"
+          "id": "fEtoW3pfs5vTme4C",
+          "name": "Telegram Account Agrobot"
         }
       }
     },
@@ -259,7 +259,7 @@
           "mode": "list",
           "cachedResultName": "Paul"
         },
-        "text": "=",
+        "text": "={{ $json.data[1].text }}",
         "additionalOptions": {
           "model": {
             "mode": "list",
@@ -274,14 +274,14 @@
       "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
       "typeVersion": 1,
       "position": [
-        1232,
-        -256
+        1040,
+        0
       ],
-      "id": "b4472222-2cdc-46a8-a9e3-b71300d5a827",
+      "id": "bc03fced-783b-4290-bf1e-d043ebbe3ab9",
       "name": "Convert text to speech",
       "credentials": {
         "elevenLabsApi": {
-          "id": "2SUazn7QDnx6T46I",
+          "id": "oYjdbb1mpqWIMa7q",
           "name": "ElevenLabs account"
         }
       }
@@ -382,11 +382,11 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "0a506abe-d9d0-4727-932a-8fc089e1d3aa",
+  "versionId": "5babaa76-78e5-44be-a39d-125c70841f1e",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "6e2de167b2de1ec7d41457055eda0f58bc345829a6200063a32688dc2f49e60a"
+    "instanceId": "0745f470424028f5b545f358433257dc798d5cc79f7c3eac7a4cea2cc04bbb2d"
   },
-  "id": "8hatIroX04gZI8Se",
+  "id": "2FIuuTrQCzKZ2zuW",
   "tags": []
 }
