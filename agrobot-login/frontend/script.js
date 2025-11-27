@@ -4,7 +4,18 @@ let chunks = [];
 const btn = document.getElementById("record");
 const messages = document.getElementById("messages");
 
+let gravando = false;
+
 btn.addEventListener("click", async () => {
+  // Se já estiver gravando → parar
+  if (gravando) {
+    mediaRecorder.stop();
+    gravando = false;
+    btn.textContent = "🎤 Gravar";
+    return;
+  }
+
+  // Se não estiver gravando → iniciar
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
   mediaRecorder = new MediaRecorder(stream);
 
@@ -14,13 +25,9 @@ btn.addEventListener("click", async () => {
   mediaRecorder.onstop = sendAudio;
 
   mediaRecorder.start();
-  btn.textContent = "⏹️ Parar";
 
-  btn.onclick = () => {
-    mediaRecorder.stop();
-    btn.textContent = "🎤 Gravar";
-    btn.onclick = arguments.callee; // mantém o evento original
-  };
+  gravando = true;
+  btn.textContent = "⏹️ Parar";
 });
 
 async function sendAudio() {

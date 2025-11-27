@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chat – Suporte Gado de Corte</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-neutral-900 text-white flex flex-col h-screen">
+<!-- Header -->
+<header class="bg-green-600 p-4 text-center shadow-lg">
+<h1 class="text-xl font-semibold">Suporte – Gado de Corte</h1>
+</header>
+
+
+<!-- Chat Container -->
+<main id="messages" class="flex-1 overflow-y-auto p-4 space-y-4">
+<!-- Mensagem do sistema -->
+<div class="flex justify-start">
+<div class="bg-neutral-800 text-white p-3 rounded-xl max-w-xs">Olá! Como posso ajudar hoje no manejo do seu gado de corte?</div>
+</div>
+
+
+<!-- Mensagem do usuário -->
+<div class="flex justify-end mb-3">
+    <div class="bg-blue-500 text-white px-4 py-2 rounded-2xl max-w-xs flex items-center gap-2">
+        <!-- Ícone de áudio -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1v22"></path>
+            <path d="M5 8v8"></path>
+            <path d="M19 8v8"></path>
+        </svg>
+        <!-- Duração fake da mensagem de voz -->
+        <span>0:07</span>
+    </div>
+</div>
+</main>
+
+
+<!-- Área de Input (somente áudio) -->
+<footer class="p-4 bg-neutral-800 flex items-center justify-center gap-4 border-t border-neutral-700">
+
+    <!-- Ícone animado enquanto grava -->
+    <div id="rec-indicator" class="hidden flex items-center gap-2 text-red-500">
+        <div class="w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+        <span id="timer" class="text-white text-sm">0:00</span>
+    </div>
+
+    <!-- Botão de gravação -->
+    <button id="record"
+        class="bg-green-600 hover:bg-green-500 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition">
+        <img src="/agrobot-login/frontend/menufoto/microfone.png" alt="Ícone Microfone">
+    </button>
+
+</footer>
+</body>
+</html>
